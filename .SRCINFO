@@ -1,23 +1,21 @@
 pkgbase = rmmagent
-	pkgdesc = Remote Monitoring Agent for GFI Languard Dashboard
-	pkgver = 1.0.4.1
+	pkgdesc = Advanced Monitoring Agent
+	pkgver = 2.0.1
 	pkgrel = 1
-	url = http://languard.gfi.com/
-	install = .INSTALL
+	url = https://www.solarwindsmsp.com/content/advanced-monitoring-agent
 	arch = x86_64
 	license = custom
-	provides = rmmagent
+	depends = dmidecode
+	depends = ethtool
+	depends = openssl-1.0
+	depends = qt5-declarative
+	depends = smartmontools
+	depends = unzip
 	options = !strip
-	source = rmmagentd.service
-	md5sums = 28e9171b39f6eafcca88d70aea08195a
-	depends_x86_64 = openssl-1.0
-	depends_x86_64 = ethtool
-	depends_x86_64 = smartmontools
-	depends_x86_64 = gcc-libs
-	depends_x86_64 = glibc
-	depends_x86_64 = openssl
-	depends_x86_64 = unzip
-	md5sums_x86_64 = 36821c2fd73f86fd9e5870029605289a
+	source = manual://rmmagent_2.0.1_amd64.deb
+	source = rmmagent.patch
+	md5sums = 366ebdb8508aef3e9676ce70e123fccc
+	md5sums = af2faec92412d7c77a1ca1bd797fb4fd
 
 pkgname = rmmagent
 

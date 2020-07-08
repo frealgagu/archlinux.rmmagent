@@ -1,0 +1,28 @@
+diff --git a/etc/init.d/rmmagent b/etc/init.d/rmmagent
+index 93deaa7..447c4f0 100755
+--- a/etc/init.d/rmmagent
++++ b/etc/init.d/rmmagent
+@@ -17,7 +17,7 @@ else
+     SCRIPTNAME="$0"
+ fi
+ 
+-RMM_BASE="/usr/local/rmmagent"
++RMM_BASE="/usr/share/rmmagent"
+ NAME=rmmagentd
+ DAEMON="${RMM_BASE}/${NAME}"
+ PIDFILE="/var/run/${NAME}.pid"
+diff --git a/usr/lib/systemd/system/rmmagent.service b/usr/lib/systemd/system/rmmagent.service
+index 777db09..2825f3a 100644
+--- a/usr/lib/systemd/system/rmmagent.service
++++ b/usr/lib/systemd/system/rmmagent.service
+@@ -7,8 +7,8 @@ After=network.target
+ [Service]
+ Type=simple
+ PIDFile=/var/run/rmmagentd.pid
+-WorkingDirectory=/usr/local/rmmagent
+-ExecStart=/usr/local/rmmagent/rmmagentd serve
++WorkingDirectory=/usr/share/rmmagent
++ExecStart=/usr/share/rmmagent/rmmagentd serve
+ ExecReload=/bin/kill -s HUP $MAINPID
+ ExecStop=/bin/kill -s TERM $MAINPID
+ KillMode=process

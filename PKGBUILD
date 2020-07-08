@@ -1,39 +1,45 @@
 # Maintainer: Sean Snell <ssnell at cmhsol dot com>
+# Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=rmmagent
-pkgver=1.0.4.1
+pkgver=2.0.1
 pkgrel=1
-pkgdesc='Remote Monitoring Agent for GFI Languard Dashboard'
-arch=('x86_64')
-url='http://languard.gfi.com/'
-license=('custom')
-options=('!strip')
-provides=('rmmagent')
-depends_x86_64=(
-	'openssl-1.0'
-	'ethtool'
-	'smartmontools'
-	'gcc-libs'
-	'glibc'
-	'openssl'
-	'unzip')
-
-install=.INSTALL
-source_x86_64=("http://repos.systemmonitor.us/rmmagent/Debian_8.0/amd64/rmmagent_1.0.4-1_amd64.deb")
-source=("rmmagentd.service")
-md5sums_x86_64=('36821c2fd73f86fd9e5870029605289a')
-md5sums=('28e9171b39f6eafcca88d70aea08195a')
+pkgdesc="Advanced Monitoring Agent"
+arch=("x86_64")
+url="https://www.solarwindsmsp.com/content/advanced-monitoring-agent"
+license=("custom")
+depends=(
+  "dmidecode"
+  "ethtool"
+  "openssl-1.0"
+  "qt5-declarative"
+  "smartmontools"
+  "unzip"
+)
+options=("!strip")
+source=(
+  "manual://${pkgname}_${pkgver}_amd64.deb"
+  "${pkgname}.patch"
+)
+md5sums=(
+  "366ebdb8508aef3e9676ce70e123fccc"
+  "af2faec92412d7c77a1ca1bd797fb4fd"
+)
 
 prepare() {
-	tar -xf $srcdir/data.tar.xz
-	tar -xf control.tar.gz
-	mv usr/local/lib/ usr/lib
-	mv usr/local/rmmagent usr/rmmagent
-	mkdir -p "$srcdir"/etc/systemd/system	
-	cp rmmagentd.service "$srcdir"/etc/systemd/system/rmmagentd.service
+  cd "${srcdir}"
+
+  bsdtar -xf data.tar.gz -C "${srcdir}/"
+
+  patch -Np1 -i "${srcdir}/${pkgname}.patch"
+}
+
+build() {
+  cd "${srcdir}"
+
+  mv "${srcdir}/usr/local/" "${srcdir}/usr/share/"
 }
 
 package() {
-	# Install
-	cp -dr --no-preserve=ownership {etc,usr} "${pkgdir}"/
+  cp --no-dereference --preserve=links --recursive --no-preserve=ownership "${srcdir}/"{etc,usr} "${pkgdir}/"
 }

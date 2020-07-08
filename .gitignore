@@ -1,0 +1,6 @@
+rmmagent-*.pkg.tar.zst
+rmmagent*.deb
+rmmagent-*.log
+PKGBUILD-namcap.log
+pkg/
+src/
