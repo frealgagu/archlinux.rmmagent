@@ -1,6 +1,6 @@
 pkgbase = rmmagent
 	pkgdesc = Advanced Monitoring Agent
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://www.solarwindsmsp.com/content/advanced-monitoring-agent
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rmmagent
 	depends = smartmontools
 	depends = unzip
 	options = !strip
-	source = manual://rmmagent_2.0.1_amd64.deb
+	source = manual://rmmagent_2.0.3_amd64.deb
 	source = rmmagent.patch
-	md5sums = 366ebdb8508aef3e9676ce70e123fccc
+	md5sums = f49564cc1131471e03ddeb409fb1edb5
 	md5sums = af2faec92412d7c77a1ca1bd797fb4fd
 
 pkgname = rmmagent

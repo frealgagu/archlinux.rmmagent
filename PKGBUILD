@@ -2,7 +2,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=rmmagent
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Advanced Monitoring Agent"
 arch=("x86_64")
@@ -22,7 +22,7 @@ source=(
   "${pkgname}.patch"
 )
 md5sums=(
-  "366ebdb8508aef3e9676ce70e123fccc"
+  "f49564cc1131471e03ddeb409fb1edb5"
   "af2faec92412d7c77a1ca1bd797fb4fd"
 )
 
